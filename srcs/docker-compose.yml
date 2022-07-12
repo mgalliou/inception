@@ -1,0 +1,21 @@
+services:
+  nginx:
+    build: ./requirements/nginx
+    ports:
+      - 443:80
+#    configs:
+#      - source: requirements/nginx/conf
+#        target: /etc/nginx/http.d/inception.conf
+#	mariadb:
+#		image: mariadb
+#        build: ./requirements/mariadb
+#        volume:
+#        - db:/var/lib/mysql
+#	wordpress:
+#		image: wordpress
+#        build: ./requirements/wordpress
+#        volume:
+#
+#volumes:
+#  db:
+#  wordpress:
