@@ -2,7 +2,7 @@ services:
   nginx:
     build: ./requirements/nginx
     ports:
-      - 443:80
+      - 443:443
 #    configs:
 #      - source: requirements/nginx/conf
 #        target: /etc/nginx/http.d/inception.conf
