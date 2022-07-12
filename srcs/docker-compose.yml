@@ -1,21 +1,21 @@
 services:
   nginx:
+    container_name: nginx
     build: ./requirements/nginx
     ports:
       - 443:443
-#    configs:
-#      - source: requirements/nginx/conf
-#        target: /etc/nginx/http.d/inception.conf
-#	mariadb:
-#		image: mariadb
-#        build: ./requirements/mariadb
-#        volume:
-#        - db:/var/lib/mysql
-#	wordpress:
-#		image: wordpress
-#        build: ./requirements/wordpress
-#        volume:
-#
-#volumes:
-#  db:
-#  wordpress:
+    volumes:
+      - wordpress:/usr/share/webapps
+        #	mariadb:
+        #		image: mariadb
+        #        build: ./requirements/mariadb
+        #        volume:
+        #        - db:/var/lib/mysql
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress
+    volumes:
+      - wordpress:/usr/share/webapps
+volumes:
+  db:
+  wordpress:
