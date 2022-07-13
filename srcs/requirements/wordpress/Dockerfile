@@ -1,4 +1,5 @@
 FROM alpine
+# TODO: automate wordpress configuration
 RUN apk add php8 php-fpm php-mysqli \
 	&& mkdir -p /usr/share/webapps \
 	&& cd /usr/share/webapps \

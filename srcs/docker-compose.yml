@@ -7,19 +7,33 @@ services:
       - 443:443
     volumes:
       - wordpress:/usr/share/webapps
+    networks:
+      - docker-network
 
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress
     volumes:
       - wordpress:/usr/share/webapps
+    networks:
+      - docker-network
 
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb
-    #volumes:
-    #  - db:/var/lib/mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql/wordpress
+    networks:
+      - docker-network
 
 volumes:
   db:
+    name: db
   wordpress:
+    name: wordpress
+
+networks:
+  docker-network:
+    name: docker-network
