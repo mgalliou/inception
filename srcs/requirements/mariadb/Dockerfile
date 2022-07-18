@@ -5,7 +5,7 @@ RUN mysql_install_db --user=mysql --datadir=/var/lib/mysql \
 		&& mkdir -p /run/mysqld \
 		&& chown -R mysql /run/mysqld
 RUN mysqld --user=mysql \
-		& sleep 1  \
+		& sleep 5  \
 		&& mysqladmin -u root password toor \
 		&& mysql -u root -e "CREATE DATABASE wordpress" \
 		&& mysql -u root -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'wordpress.docker-network' IDENTIFIED BY 'wordpress'" \
