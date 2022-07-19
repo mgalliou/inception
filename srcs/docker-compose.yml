@@ -1,7 +1,6 @@
 services:
 
   # TODO: Only allow nginx to communicate with wordpress; and wordpress with mariadb (ports, network_mode)
-  # TODO: configure 'login.42.fr' domainname
   nginx:
     container_name: nginx
     build: ./requirements/nginx
