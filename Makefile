@@ -2,19 +2,21 @@
 
 NAME = inception
 SRCS = srcs
+ENV_FILE = $(SRCS)/.env
+FLAGS = --project-directory $(SRCS) --env-file $(ENV_FILE)
 
 all: build
 
 run: build
-	docker-compose --project-directory $(SRCS) up -d
+	docker-compose $(FLAGS) up -d
 
 build:
-	docker-compose --project-directory $(SRCS) build
+	docker-compose $(FLAGS) build
 
 stop:
-	docker-compose --project-directory $(SRCS) down
+	docker-compose $(FLAGS) down
 
 clean:
-	docker-compose --project-directory $(SRCS) down --remove-orphans --rmi local -v
+	docker-compose $(FLAGS) down --remove-orphans --rmi local -v
 
 re: stop clean all
