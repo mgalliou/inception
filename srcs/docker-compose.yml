@@ -1,3 +1,13 @@
+volumes:
+  db:
+    name: db
+  wordpress:
+    name: wordpress
+
+networks:
+  docker-network:
+    name: ${NETWORK}
+
 services:
 
   nginx:
@@ -8,15 +18,21 @@ services:
     volumes:
       - wordpress:/usr/share/webapps
     networks:
-      - docker-network
+      - ${NETWORK}
 
   wordpress:
     container_name: wordpress
-    build: ./requirements/wordpress
+    build:
+      context: ./requirements/wordpress
+      args:
+        - DB=${MYSQL_DATABASE}
+        - USER=${MYSQL_USER}
+        - PASSWORD=${MYSQL_PASSWORD}
+        - HOST=mariadb
     volumes:
       - wordpress:/usr/share/webapps
     networks:
-      - docker-network
+      - ${NETWORK}
 
   mariadb:
     container_name: mariadb
@@ -27,17 +43,9 @@ services:
         - USER=${MYSQL_USER}
         - PASSWORD=${MYSQL_PASSWORD}
         - DATABASE=${MYSQL_DATABASE}
+        - DOMAIN=${NETWORK}
     volumes:
       - db:/var/lib/mysql/wordpress
     networks:
-      - docker-network
+      - ${NETWORK}
 
-volumes:
-  db:
-    name: db
-  wordpress:
-    name: wordpress
-
-networks:
-  docker-network:
-    name: docker-network
