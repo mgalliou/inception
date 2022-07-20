@@ -14,4 +14,4 @@ RUN mysqld --user=mysql \
 		&& mysql -u root -e "CREATE DATABASE wordpress" \
 		&& mysql -u root -e "GRANT ALL PRIVILEGES ON $DATABASE.* TO '$USER'@'wordpress.docker-network' IDENTIFIED BY '$PASSWORD'" \
 		&& mysql -u root -e "FLUSH PRIVILEGES"
-ENTRYPOINT ["mysqld", "--user=mysql"]
+CMD ["mysqld", "--user=mysql"]

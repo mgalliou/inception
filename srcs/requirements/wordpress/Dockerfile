@@ -7,4 +7,4 @@ RUN apk add php php-fpm php-mysqli \
 	&& tar -xzvf latest.tar.gz \
 	&& rm latest.tar.gz \
 	&& sed -i "s/listen = 127.0.0.1:9000/listen = 9000/g" /etc/php8/php-fpm.d/www.conf
-ENTRYPOINT ["php-fpm8", "-F"]
+CMD ["php-fpm8", "-F"]

@@ -7,4 +7,4 @@ RUN apk add --no-cache nginx
 #		&& openssl req -x509 -newkey rsa:4096 -days 1024 -keyout server.key -out server.crt \
 #	&& chmod 400 server.key \
 #	&& chmod 444 server.crt
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
