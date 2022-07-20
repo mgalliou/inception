@@ -1,6 +1,6 @@
 FROM alpine
 # TODO: automate wordpress configuration
-RUN apk add php8 php-fpm php-mysqli \
+RUN apk add php php-fpm php-mysqli \
 	&& mkdir -p /usr/share/webapps \
 	&& cd /usr/share/webapps \
 	&& wget http://wordpress.org/latest.tar.gz \

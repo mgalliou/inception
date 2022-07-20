@@ -1,6 +1,5 @@
 services:
 
-  # TODO: Only allow nginx to communicate with wordpress; and wordpress with mariadb (ports, network_mode)
   nginx:
     container_name: nginx
     build: ./requirements/nginx
@@ -28,8 +27,6 @@ services:
         - USER=${MYSQL_USER}
         - PASSWORD=${MYSQL_PASSWORD}
         - DATABASE=${MYSQL_DATABASE}
-    ports:
-      - 3306:3306
     volumes:
       - db:/var/lib/mysql/wordpress
     networks:
